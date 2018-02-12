@@ -1,0 +1,21 @@
+default: &default
+  adapter: mysql2
+  pool: 5
+  username: root
+  password: root
+
+development:
+  <<: *default
+  database: cvcitos_development
+
+test:
+  <<: *default
+  database: cvcitos_test
+
+production:
+  <<: *default
+  database: <%= ENV['CVCITOS_DATABASE'] %>
+  username: <%= ENV['CVCITOS_DATABASE_USERNAME'] %>
+  password: <%= ENV['CVCITOS_DATABASE_PASSWORD'] %>
+  host: <%= ENV['CVCITOS_DATABASE_HOSTNAME'] %>
+  port: <%= ENV['CVCITOS_DATABASE_PORT'] %>
