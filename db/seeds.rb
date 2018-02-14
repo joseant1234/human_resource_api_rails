@@ -1,1 +1,1 @@
-User.create([{email: 'hola@gmail.com',password: '12345678'}])
+Dir[File.join(Rails.root, 'db', 'seeds', '*.rb')].sort.each { |seed| load seed }
