@@ -1,2 +1,5 @@
-json.data JSON.parse(yield)
-json.errors @errors
+if @errors.present?
+  json.errors @errors
+else
+  json.data JSON.parse(yield)
+end

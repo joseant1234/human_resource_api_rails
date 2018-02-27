@@ -30,6 +30,11 @@ gem 'jbuilder', '~> 2.5'
 gem 'jwt'
 gem 'mysql2'
 gem "paperclip", "~> 5.0.0"
+gem "pdfkit"
+gem "valid_email"
+gem "wicked_pdf"
+gem "wkhtmltopdf-binary"	
+
 gem 'will_paginate', '~> 3.1.0'
 
 group :development, :test do

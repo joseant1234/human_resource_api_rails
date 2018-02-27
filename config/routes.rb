@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   	namespace :v1 do
   		resources :users, only: :create
   		resources :sessions, only: [:create]
-  		resources :employees
+  		resources :employees do
+  			member do
+  				get 'download'
+  			end
+  		end
       resources :skills, only: [:index,:show]
   	end
   end

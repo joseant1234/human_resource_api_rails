@@ -6,7 +6,7 @@ class Api::V1::UsersController < Api::V1::ApiController
       @jwt = JsonWebToken.encode({user_id: @user.id})
       render :show, status: :created
     else
-      error_array!(@user.erros.full_messages,:unprocessable_entity)
+      error_array!(@user.errors.full_messages,:unprocessable_entity)
     end
   end
 

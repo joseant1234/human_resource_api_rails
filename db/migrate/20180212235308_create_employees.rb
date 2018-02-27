@@ -3,10 +3,12 @@ class CreateEmployees < ActiveRecord::Migration[5.1]
     create_table :employees do |t|
       t.string :first_name
       t.string :last_name
-      t.integer :area
-      t.integer :position
+      t.string :position
       t.text :summary
       t.attachment :photo
+      t.string :college
+      t.string :degree
+      t.references :team, foreign_key: true
 
       t.timestamps
     end
