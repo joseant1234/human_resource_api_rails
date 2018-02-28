@@ -129,13 +129,13 @@ class Api::V1::EmployeesController < Api::V1::ApiController
       :first_name,:last_name,:team_id,:position,
       :summary,:photo, :collegue,:degree,
       employee_languages_attributes: [:id, :language, :level, :_destroy],
-      employee_skills_attributes: [:id, :skill, :_destroy],
+      employee_skills_attributes: [:id, :skill_id, :_destroy],
       employee_soft_skills_attributes: [:id, :soft_skill, :_destroy],
       employee_certifications_attributes: [:id, :certification,:date, :_destroy],
       employee_interests_attributes: [:id, :interest, :_destroy],
       employee_projects_attributes: [:id, :start_date, :end_date, :role, :_destroy,
         employee_project_responsabilities_attributes: [:id, :responsability, :_destroy],
-        employee_project_skills_attributes: [:id, :skill, :_destroy]])
+        employee_project_skills_attributes: [:id, :skill_id, :_destroy]])
 
   end
 

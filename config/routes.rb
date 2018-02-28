@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   				get 'download'
   			end
   		end
+      resources :links, only: [:index, :show, :create, :destroy]
       resources :skills, only: [:index,:show]
   	end
   end

@@ -9,15 +9,20 @@ class Employee < ApplicationRecord
   has_many :employee_project_skills, through: :employee_projects
   has_many :employee_project_responsabilities, through: :employee_projects
 
-  accepts_nested_attributes_for :employee_languages,:employee_projects,:employee_skills,:employee_soft_skills,:employee_certifications,:employee_interests,allow_destroy: true
+  accepts_nested_attributes_for :employee_languages,
+      :employee_projects,
+      :employee_skills,
+      :employee_soft_skills,
+      :employee_certifications,
+      :employee_interests,
+      allow_destroy: true
 
   has_attached_file :photo, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: nil#, path: ":rails_root/photos/:id/:style/:filename"
   has_attached_file :resume
+
   validates_attachment_content_type :resume, :content_type => ["application/pdf"]
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\z/
-
   validates_presence_of :first_name, :last_name
-
 
   # ---------------- CLASSESS METHOD ---------
   def self.filter_by_position(position)
@@ -43,7 +48,7 @@ class Employee < ApplicationRecord
   def self.filter_by_skills(skills)
     joins(employee_skills: :skill).where("skills.name IN (?)",skills).group("employees.id").having("count(employee_skills.id) >= ?",skills.length)
   end
-  
+
   # ---------------- INSTANCE METHOD ---------
     def generate_pdf(pdf)
       html = render_to_string_with_wicked_pdf(:pdf => pdf,
