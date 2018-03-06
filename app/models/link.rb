@@ -3,6 +3,7 @@ class Link < ApplicationRecord
   has_many :link_skills, dependent: :destroy
   has_many :skills, through: :link_skills
 
+  validates :link_skills, presence: true
   before_create :set_defaults
 
   def build_from_params(skill_names)

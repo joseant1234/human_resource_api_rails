@@ -1,6 +1,8 @@
 class Api::V1::LinksController < Api::V1::ApiController
   before_action :authenticate_request!
   before_action :set_link, only: [:show, :destroy]
+  before_action(only: [:destroy]) { |controlador| controlador.authenticate_owner_resource(@link) }
+  before_action :authorization_to_show_link, only: [:show]
 
   def index
     @links = @current_user.links
@@ -30,7 +32,11 @@ class Api::V1::LinksController < Api::V1::ApiController
 
   private
   def set_link
-    @link = Link.find(params[:id])
+    @link = Link.find_by_url(params[:id])
+  end
+
+  def authorization_to_view_link
+    error!("Ya expiró el link",:unauthorized) if @link.expiration_date < Date.today
   end
 
 end
