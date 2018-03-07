@@ -30,5 +30,15 @@ module CvcitosOnlyApi
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
     config.autoload_paths << "#{Rails.root}/lib"
+    config.middleware.use Rack::Cors do
+      allow do
+        origins '*'
+        resource '*',
+          :headers => :any,
+          :expose  => ['access-token', 'expiry', 'token-type', 'uid', 'client'],
+          :methods => [:get, :post, :options, :delete, :put]
+      end
+    end
+
   end
 end

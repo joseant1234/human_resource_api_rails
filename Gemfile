@@ -31,6 +31,7 @@ gem 'jwt'
 gem 'mysql2'
 gem "paperclip", "~> 5.0.0"
 gem "pdfkit"
+gem 'rack-cors', :require => 'rack/cors'
 gem "valid_email"
 gem "wicked_pdf"
 gem "wkhtmltopdf-binary"
