@@ -8,18 +8,18 @@ RSpec.describe Employee, :type => :model do
 	it { should have_many(:employee_skills) }
 	it { should have_many(:employee_soft_skills) }
 	it { should have_many(:employee_interests) }
-	
-	it "should return length of the list employee with developer position" do
+
+	it "should expect that length of the list employee not be empty when have employee with position Developer" do
 		employee = FactoryBot.create(:employee)
 		employees = Employee.filter_by_position("developer")
 		expect(employees.length).not_to be([])
 	end
 
-	it "should return length of the list employee with python team" do
+	it "should expect that length of the list employee not be empty when have employee with team Python" do
 		employee = FactoryBot.create(:employee)
 		employees = Employee.filter_by_team(4)
 		expect(employees.length).not_to be([])
 	end
 
-	
+
 end

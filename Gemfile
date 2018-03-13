@@ -26,11 +26,11 @@ gem 'puma', '~> 3.7'
 # gem 'rack-cors'
 
 gem 'bcrypt', '~> 3.1.7'
+gem "haml-rails", "~> 1.0"
 gem 'jbuilder', '~> 2.5'
 gem 'jwt'
 gem 'mysql2'
 gem "paperclip", "~> 5.0.0"
-gem "pdfkit"
 gem 'rack-cors', :require => 'rack/cors'
 gem "valid_email"
 gem "wicked_pdf"

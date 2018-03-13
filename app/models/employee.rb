@@ -50,27 +50,9 @@ class Employee < ApplicationRecord
   end
 
   # ---------------- INSTANCE METHOD ---------
-    def generate_pdf(pdf)
-      html = render_to_string_with_wicked_pdf(:pdf => pdf,
-        :template => pdf,
-        :layout => 'api/v1/pdf.html.erb',
-        :encoding => 'UTF-8',
-        :page_size        => 'A4',
-        :dpi              => '300',
-        :print_media_type => true,
-        :no_background    => true,
-        :margin => {
-                :top => 50,
-                :bottom => 25
-             },
-        :header => { :html => { :template => '' },
-                     :spacing => 10,
-                     :margin => {
-                             :top => 40
-                          }
-                   },
-        :footer => { :html => { :template => '' } }
-      )
-    end
+  def display_full_name
+    "#{self.first_name} #{self.last_name}"
+  end
+
 
 end

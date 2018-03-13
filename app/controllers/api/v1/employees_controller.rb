@@ -59,9 +59,6 @@ class Api::V1::EmployeesController < Api::V1::ApiController
   end
 
   def download
-    #@employee.resume = StringIO.new(generate_pdf("api/v1/employees/resume.html.erb")) #mimic a real upload file
-    #@employee.resume = WickedPdf.new.pdf_from_string('<h1>Hola</h1>')
-
     # create an instance of ActionView, so we can use the render method outside of a controller
     av = ActionView::Base.new()
     av.view_paths = ActionController::Base.view_paths
@@ -78,7 +75,8 @@ class Api::V1::EmployeesController < Api::V1::ApiController
     doc_pdf = WickedPdf.new.pdf_from_string(
       pdf_html,
       page_size: 'Letter',
-      javascript_delay: 6000
+      javascript_delay: 6000,
+
     )
 
     # save PDF to disk
@@ -92,32 +90,32 @@ class Api::V1::EmployeesController < Api::V1::ApiController
 
     # The report has now been saved elsewhere using Paperclip; we don't need to store it locally
     File.delete(pdf_path) if File.exist?(pdf_path)
-    #@employee.save
+
     render "api/v1/employees/show"
   end
 
-     def generate_pdf(pdf)
-      html = render_to_string(:pdf => pdf,
-        :template => pdf,
-        :layout => 'api/v1/pdf.html.erb',
-        :encoding => 'UTF-8',
-        :page_size        => 'A4',
-        :dpi              => '300',
-        :print_media_type => true,
-        :no_background    => true,
-        :margin => {
-                :top => 50,
-                :bottom => 25
-             },
-        :header => { :html => { :template => '' },
-                     :spacing => 10,
-                     :margin => {
-                             :top => 40
-                          }
-                   },
-        :footer => { :html => { :template => '' } }
-      )
-    end
+  #  def generate_pdf(pdf)
+  #   html = render_to_string(:pdf => pdf,
+  #     :template => pdf,
+  #     :layout => 'api/v1/pdf.html.erb',
+  #     :encoding => 'UTF-8',
+  #     :page_size        => 'A4',
+  #     :dpi              => '300',
+  #     :print_media_type => true,
+  #     :no_background    => true,
+  #     :margin => {
+  #             :top => 50,
+  #             :bottom => 25
+  #          },
+  #     :header => { :html => { :template => '' },
+  #                  :spacing => 10,
+  #                  :margin => {
+  #                          :top => 40
+  #                       }
+  #                },
+  #     :footer => { :html => { :template => '' } }
+  #   )
+  # end
 
   private
   def set_employee
