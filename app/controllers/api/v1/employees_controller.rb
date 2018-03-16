@@ -26,7 +26,7 @@ class Api::V1::EmployeesController < Api::V1::ApiController
     end
 
     if params[:skills].present?
-      @employees = @employees.filter_by_skills(params[:skills])
+      @employees = @employees.filter_by_skills(params[:skills].split(','))
     end
 
     render template: "api/v1/employees/index"
