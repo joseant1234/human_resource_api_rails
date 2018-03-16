@@ -5,7 +5,7 @@ class EmployeeProject < ApplicationRecord
 
   accepts_nested_attributes_for :employee_project_responsabilities,:employee_project_skills,allow_destroy: true
 
-  validates_presence_of :title :start_date
+  validates_presence_of :title, :start_date
   # ---------------- INSTANCE METHOD ---------
   def since_to
     "#{self.start_date.try(:strftime,'%b %Y')} - #{self.end_date.try(:strftime,'%b %Y') || 'Present'}"
