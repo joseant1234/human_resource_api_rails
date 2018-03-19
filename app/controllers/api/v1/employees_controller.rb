@@ -3,7 +3,7 @@ class Api::V1::EmployeesController < Api::V1::ApiController
   before_action :set_employee, only: [:show, :update, :destroy, :download]
 
   def index
-    @employees = Employee.includes(:team).paginate(page: params[:page], per_page: 2)
+    @employees = Employee.includes(:team).paginate(page: params[:page], per_page: Employee::PER_PAGE)
 
     if params[:position].present?
       @employees = @employees.filter_by_position(params[:position])
@@ -29,7 +29,7 @@ class Api::V1::EmployeesController < Api::V1::ApiController
       @employees = @employees.filter_by_skills(params[:skills].split(','))
     end
 
-    render template: "api/v1/employees/index"
+    render template: "api/v1/employees/index", layout: false
   end
 
   def show

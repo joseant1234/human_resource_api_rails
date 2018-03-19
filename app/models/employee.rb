@@ -24,6 +24,7 @@ class Employee < ApplicationRecord
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\z/
   validates_presence_of :first_name, :last_name
 
+  PER_PAGE = 2
   # ---------------- CLASSESS METHOD ---------
   def self.filter_by_position(position)
     where(position: position)
