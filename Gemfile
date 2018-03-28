@@ -25,11 +25,31 @@ gem 'puma', '~> 3.7'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
 
+gem 'bcrypt', '~> 3.1.7'
+gem "haml-rails", "~> 1.0"
+gem 'jbuilder', '~> 2.5'
+gem 'jwt'
 gem 'mysql2'
+gem "paperclip", "~> 5.0.0"
+gem 'rack-cors', :require => 'rack/cors'
+gem "valid_email"
+gem "wicked_pdf"
+gem "wkhtmltopdf-binary"
+gem 'will_paginate', '~> 3.1.0'
 
+# group :development, :test do
+#   gem 'factory_bot_rails'
+#   gem 'rspec-rails'
+#   gem 'shoulda-matchers'
+# end
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rails-controller-testing'
+  gem 'factory_bot_rails'
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'shoulda-matchers','~> 2.8.0', group: :test
 end
 
 group :development do

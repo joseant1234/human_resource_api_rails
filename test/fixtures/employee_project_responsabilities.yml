@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  employee_project: one
+  responsability: MyString
+
+two:
+  employee_project: two
+  responsability: MyString

@@ -1,0 +1,109 @@
+.row
+  .col.s8
+    %p.bold.custom-purple-text.big= "</"
+    .top-space
+      %p.medium hello!
+      %p.bold.medium= "I am #{employee.display_full_name}"
+      %p.grey-text= employee.position.upcase
+  .col.s4
+    - if !employee.photo.present?
+      = wicked_pdf_image_tag 'default.png', width: "100%;"
+    - else
+      = wicked_pdf_image_tag employee.photo.url, width: "100%"
+
+.row
+  .col.s8
+    %p.bold SUMMARY
+    %p= employee.summary
+
+.row.top-space
+  .col.s6
+    .row.no-margin
+      .col.s1
+        %i.material-icons.left.custom-purple-text book
+      .col.s11
+        %p.bold EDUACTION
+    .row
+      .col.offset-s1.s11
+        %ul
+          %li
+            %p.bold= employee.degree
+            %p= employee.college
+
+  .col.s6
+    .row.no-margin
+      .col.s1
+        %i.material-icons.left.custom-purple-text school
+      .col.s11
+        %p.bold CERTIFICATIONS
+    .row
+      .col.offset-s1.s11
+        %ul
+          -employee.employee_certifications.each do |certification|
+            %li
+              %p.bold= certification.certification
+              %p= certification.date
+
+.row
+  .col.s6
+    .row.no-margin
+      .col.s1
+        %i.material-icons.left.custom-purple-text edit
+      .col.s11
+        %p.bold WORK EXPERIENCE
+    .row
+      .col.offset-s1.s11
+        %ul
+          - employee.employee_projects.each do |project|
+            %li
+              %p.bold= project.title
+              %p= "(#{project.since_to})"
+              .row.top-space
+                .col.s12
+                  %p.grey-text Responsabilities:
+                  %ul.decorator-point
+                    - project.employee_project_responsabilities.each do |responsability|
+                      %li= responsability.responsability
+
+
+.row
+  .col.s6
+    .row.no-margin
+      .col.s1
+        %i.material-icons.left.custom-purple-text check
+      .col.s11
+        %p.bold STRENGTHS
+    .row
+      .col.offset-s1.s11
+        %ul
+          - employee.employee_soft_skills.each do |soft_skill|
+            %li= soft_skill.soft_skill
+
+  .col.s6
+    .row.no-margin
+      .col.s1
+        %i.material-icons.left.custom-purple-text star
+      .col.s11
+        %p.bold AREAS OF INTEREST
+    .row
+      .col.offset-s1.s11
+        %ul
+          - employee.employee_interests.each do |interest|
+            %li= interest.interest
+
+.row
+  .col.s6
+    .row.no-margin
+      .col.s1
+        %i.material-icons.left.custom-purple-text person
+      .col.s11
+        %p.bold TECHNICAL KNOWLEDGE
+    .row
+      .col.offset-s1.s11
+        %ul
+          - employee.employee_skills.each do |employee_skill|
+            %li= employee_skill.skill.name
+
+.row
+  .col.s12
+    %p.bold.custom-purple-text.big.right= ">"
