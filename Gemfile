@@ -36,10 +36,6 @@ gem "wicked_pdf"
 gem "wkhtmltopdf-binary"
 gem 'will_paginate', '~> 3.1.0'
 
-group :production do
-  gem 'pg'
-end
-
 # group :development, :test do
 #   gem 'factory_bot_rails'
 #   gem 'rspec-rails'
