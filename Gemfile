@@ -32,7 +32,7 @@ gem 'jwt'
 gem "paperclip", "~> 5.0.0"
 gem 'rack-cors', :require => 'rack/cors'
 gem "valid_email"
-gem 'pg'
+gem 'pg', '0.21.0'
 gem "wicked_pdf"
 gem "wkhtmltopdf-binary"
 gem 'will_paginate', '~> 3.1.0'
