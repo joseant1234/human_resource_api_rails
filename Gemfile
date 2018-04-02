@@ -29,7 +29,6 @@ gem 'bcrypt', '~> 3.1.7'
 gem "haml-rails", "~> 1.0"
 gem 'jbuilder', '~> 2.5'
 gem 'jwt'
-gem 'mysql2'
 gem "paperclip", "~> 5.0.0"
 gem 'rack-cors', :require => 'rack/cors'
 gem "valid_email"
@@ -50,6 +49,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'shoulda-matchers','~> 2.8.0', group: :test
+  gem 'mysql2'
 end
 
 group :development do
