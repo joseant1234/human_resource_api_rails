@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  employee: one
+  certification: MyString
+  date: 2018-02-15
+
+two:
+  employee: two
+  certification: MyString
+  date: 2018-02-15
